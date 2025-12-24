@@ -458,6 +458,67 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===================================
+    // Smooth Scroll for Anchor Links
+    // ===================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#' && href !== '#home') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+
+    // ===================================
+    // Parallax Effect for Hero Video
+    // ===================================
+    const parallaxVideo = document.querySelector('.hero-video');
+    if (parallaxVideo) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const heroSection = document.querySelector('.hero-section');
+                    if (heroSection && scrolled < heroSection.offsetHeight) {
+                        parallaxVideo.style.transform = `scale(1.05) translateY(${scrolled * 0.5}px)`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    // ===================================
+    // Scroll to Top Button
+    // ===================================
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // ===================================
     // Performance: Debounce Scroll Events
     // ===================================
     function debounce(func, wait) {
