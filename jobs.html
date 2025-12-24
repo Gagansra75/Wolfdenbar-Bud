@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - The Wolf Den Bar & Grill</title>
+    <meta name="description" content="Join our team at The Wolf Den Bar & Grill. Apply for job opportunities in Reno.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to Main Content -->
+    <a href="#content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="The Wolf Den Bar & Grill" class="logo-image">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="menu.html">MENU</a></li>
+                        <li><a href="drinks.html">DRINKS</a></li>
+                        <li><a href="specials.html">SPECIALS</a></li>
+                        <li><a href="events.html">EVENTS</a></li>
+                        <li><a href="reserve.html">RESERVE</a></li>
+                        <li><a href="https://wolfdenbar.square.site/" target="_blank" class="order-btn">ORDER</a></li>
+                        <li><a href="jobs.html">JOBS</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Join Our Team</h1>
+                <p class="page-subtitle">WE'RE ALWAYS LOOKING FOR TALENTED INDIVIDUALS</p>
+            </div>
+        </section>
+
+        <!-- Job Application Form -->
+        <section class="application-section">
+            <div class="container">
+                <div class="form-intro">
+                    <h2>Career Opportunities</h2>
+                    <p>At The Wolf Den Bar & Grill, we're always looking for passionate, hardworking individuals to join our team. Whether you're experienced in the restaurant industry or just starting out, we'd love to hear from you!</p>
+                    <p><strong>Available Positions:</strong> Servers, Bartenders, Cooks, Dishwashers, Host/Hostess, and Management</p>
+                </div>
+
+                <form class="job-application-form" id="jobApplicationForm">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP Code</label>
+                                <input type="text" id="zip" name="zip">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Position Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="position">Position Applying For *</label>
+                            <select id="position" name="position" required>
+                                <option value="">Select a position</option>
+                                <option value="Server">Server</option>
+                                <option value="Bartender">Bartender</option>
+                                <option value="Cook">Cook</option>
+                                <option value="Dishwasher">Dishwasher</option>
+                                <option value="Host/Hostess">Host/Hostess</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="availability">Availability *</label>
+                            <select id="availability" name="availability" required>
+                                <option value="">Select availability</option>
+                                <option value="Full-Time">Full-Time</option>
+                                <option value="Part-Time">Part-Time</option>
+                                <option value="Weekends Only">Weekends Only</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startDate">Available Start Date</label>
+                            <input type="date" id="startDate" name="startDate">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Experience & Qualifications</h3>
+                        
+                        <div class="form-group">
+                            <label for="experience">Years of Experience in Restaurant/Hospitality</label>
+                            <select id="experience" name="experience">
+                                <option value="">Select experience level</option>
+                                <option value="No Experience">No Experience</option>
+                                <option value="Less than 1 year">Less than 1 year</option>
+                                <option value="1-2 years">1-2 years</option>
+                                <option value="3-5 years">3-5 years</option>
+                                <option value="5+ years">5+ years</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="previousEmployer">Previous Employer</label>
+                            <input type="text" id="previousEmployer" name="previousEmployer">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="coverLetter">Why do you want to work at The Wolf Den? *</label>
+                            <textarea id="coverLetter" name="coverLetter" rows="5" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="resume">Upload Resume (PDF, DOC, DOCX) *</label>
+                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                            <small>Maximum file size: 5MB</small>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Additional Information</h3>
+                        
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" name="over18" required>
+                                I am 18 years of age or older *
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" name="legallyAuthorized" required>
+                                I am legally authorized to work in the United States *
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Comments or Questions</label>
+                            <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Info -->
+        <section class="contact-info-section">
+            <div class="container">
+                <h3>Questions About Employment?</h3>
+                <p>Contact us at <a href="tel:+17754486946">(775)-448-6946</a> or <a href="mailto:grsonsinc@gmail.com">grsonsinc@gmail.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 The Wolf Den Bar & Grill. All rights reserved.</p>
+                <p>
+                    <a href="accessibility.html">Website Accessibility</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/jobs-form.js"></script>
+</body>
+</html>

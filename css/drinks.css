@@ -1,0 +1,378 @@
+/* ===================================
+   Drinks Page Specific Styles
+   =================================== */
+
+/* Drinks Hero Section */
+.drinks-hero {
+    position: relative;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a4a6f 100%);
+    padding: 100px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.drinks-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
+    pointer-events: none;
+}
+
+.drinks-hero h1 {
+    font-size: 56px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 2;
+}
+
+.drinks-hero .hero-subtitle {
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 3px;
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+}
+
+/* Category Navigation */
+.drink-categories-nav {
+    background-color: #ffffff;
+    padding: 30px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 75px;
+    z-index: 100;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+}
+
+.category-btn.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Drinks Menu Section */
+.drinks-menu-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.menu-category {
+    margin-bottom: 80px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.menu-category.hidden {
+    display: none;
+}
+
+.category-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.category-header h2 {
+    font-size: 42px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.category-header h3 {
+    font-size: 32px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.category-description {
+    font-size: 16px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Drinks Grid */
+.drinks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.drink-item {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.drink-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.drink-item.featured {
+    border-left: 4px solid #FFA500;
+    background: linear-gradient(135deg, #ffffff 0%, #fffaf0 100%);
+}
+
+.drink-info h3 {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.drink-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.drink-prices {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+    padding: 8px 15px;
+    background-color: #f0f4f8;
+    border-radius: 6px;
+}
+
+/* Wine Subsections */
+.wine-subsection {
+    margin-bottom: 50px;
+}
+
+.wine-subsection h3 {
+    font-size: 28px;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Happy Hour Banner */
+.happy-hour-banner {
+    background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+    padding: 60px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.happy-hour-banner h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.happy-hour-banner p {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.happy-hour-banner .special-text {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 20px 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.happy-hour-banner .btn {
+    background-color: #ffffff;
+    color: #FFA500;
+    border: 2px solid #ffffff;
+}
+
+.happy-hour-banner .btn:hover {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    /* Header adjustments for mobile */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        justify-content: flex-end;
+    }
+
+    .nav-list {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        flex-direction: column;
+        background-color: var(--dark-color);
+        width: 100%;
+        padding: 30px;
+        gap: 20px;
+        transition: left 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .nav-list.active {
+        left: 0;
+    }
+
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-list a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    .order-btn {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+
+    .header-content {
+        gap: 20px;
+    }
+
+    /* Page specific styles */
+    .drinks-hero h1 {
+        font-size: 42px;
+    }
+
+    .drinks-hero .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .category-buttons {
+        gap: 10px;
+    }
+
+    .category-btn {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+
+    .drinks-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .category-header h2 {
+        font-size: 32px;
+    }
+
+    .happy-hour-banner h2 {
+        font-size: 32px;
+    }
+
+    .happy-hour-banner .special-text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .drinks-hero {
+        padding: 60px 20px;
+    }
+
+    .drinks-hero h1 {
+        font-size: 32px;
+    }
+
+    .drink-categories-nav {
+        top: 65px;
+        padding: 20px 10px;
+    }
+
+    .category-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .drink-item {
+        padding: 20px;
+    }
+
+    .drink-info h3 {
+        font-size: 20px;
+    }
+
+    .drink-prices {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .happy-hour-banner h2 {
+        font-size: 26px;
+    }
+
+    .happy-hour-banner p {
+        font-size: 16px;
+    }
+
+    .happy-hour-banner .special-text {
+        font-size: 16px;
+    }
+}

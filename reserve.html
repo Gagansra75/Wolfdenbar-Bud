@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations - The Wolf Den Bar & Grill</title>
+    <meta name="description" content="Reserve a table at The Wolf Den Bar & Grill for your party or special event.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to Main Content -->
+    <a href="#content" class="skip-link">Skip to main content</a>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="The Wolf Den Bar & Grill" class="logo-image">
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="menu.html">MENU</a></li>
+                        <li><a href="drinks.html">DRINKS</a></li>
+                        <li><a href="specials.html">SPECIALS</a></li>
+                        <li><a href="events.html">EVENTS</a></li>
+                        <li><a href="reserve.html">RESERVE</a></li>
+                        <li><a href="https://wolfdenbar.square.site/" target="_blank" class="order-btn">ORDER</a></li>
+                        <li><a href="jobs.html">JOBS</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Make a Reservation</h1>
+                <p class="page-subtitle">RESERVE YOUR TABLE FOR A GREAT DINING EXPERIENCE</p>
+            </div>
+        </section>
+
+        <!-- Reservation Form -->
+        <section class="reservation-section">
+            <div class="container">
+                <div class="form-intro">
+                    <h2>Table Reservations</h2>
+                    <p>Planning a party, celebration, or just want to ensure you have a table waiting? Fill out the form below and we'll confirm your reservation as soon as possible.</p>
+                    <p><strong>Please note:</strong> Reservations are recommended for parties of 6 or more. For immediate seating inquiries, please call us at <a href="tel:+17754486946">(775)-448-6946</a>.</p>
+                </div>
+
+                <form class="reservation-form" id="reservationForm">
+                    <div class="form-section">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Reservation Details</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Reservation Date *</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Preferred Time *</label>
+                                <select id="time" name="time" required>
+                                    <option value="">Select a time</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="11:30 AM">11:30 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="12:30 PM">12:30 PM</option>
+                                    <option value="1:00 PM">1:00 PM</option>
+                                    <option value="1:30 PM">1:30 PM</option>
+                                    <option value="2:00 PM">2:00 PM</option>
+                                    <option value="2:30 PM">2:30 PM</option>
+                                    <option value="3:00 PM">3:00 PM</option>
+                                    <option value="3:30 PM">3:30 PM</option>
+                                    <option value="4:00 PM">4:00 PM</option>
+                                    <option value="4:30 PM">4:30 PM</option>
+                                    <option value="5:00 PM">5:00 PM</option>
+                                    <option value="5:30 PM">5:30 PM</option>
+                                    <option value="6:00 PM">6:00 PM</option>
+                                    <option value="6:30 PM">6:30 PM</option>
+                                    <option value="7:00 PM">7:00 PM</option>
+                                    <option value="7:30 PM">7:30 PM</option>
+                                    <option value="8:00 PM">8:00 PM</option>
+                                    <option value="8:30 PM">8:30 PM</option>
+                                    <option value="9:00 PM">9:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">Number of Guests *</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">Select party size</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
+                                    <option value="9">9 Guests</option>
+                                    <option value="10">10 Guests</option>
+                                    <option value="10+">More than 10</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="seating">Seating Preference</label>
+                                <select id="seating" name="seating">
+                                    <option value="">No preference</option>
+                                    <option value="Indoor">Indoor</option>
+                                    <option value="Outdoor">Outdoor (if available)</option>
+                                    <option value="Bar Area">Bar Area</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Event Information (Optional)</h3>
+                        
+                        <div class="form-group">
+                            <label for="occasion">Occasion</label>
+                            <select id="occasion" name="occasion">
+                                <option value="">Select occasion</option>
+                                <option value="Birthday">Birthday</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Business Meeting">Business Meeting</option>
+                                <option value="Family Gathering">Family Gathering</option>
+                                <option value="Sports Event">Sports Event</option>
+                                <option value="Other Celebration">Other Celebration</option>
+                                <option value="Just Dining">Just Dining</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specialRequests">Special Requests or Dietary Restrictions</label>
+                            <textarea id="specialRequests" name="specialRequests" rows="5" placeholder="Please let us know if you have any special requests, dietary restrictions, accessibility needs, or if you'd like to arrange anything special for your occasion."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" name="marketingConsent">
+                                I'd like to receive updates about special events and promotions
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Reservation Request</button>
+                    </div>
+
+                    <p class="form-note">* Required fields. We'll contact you to confirm your reservation within 24 hours.</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact Info -->
+        <section class="contact-info-section">
+            <div class="container">
+                <h3>Need Immediate Assistance?</h3>
+                <p>Call us at <a href="tel:+17754486946">(775)-448-6946</a> or email <a href="mailto:grsonsinc@gmail.com">grsonsinc@gmail.com</a></p>
+                <div class="hours-info">
+                    <h4>Business Hours</h4>
+                    <p>Sun, Mon, Wed, Thur: 11:00 am - 09:00 pm<br>
+                    Fri, Sat: 11:00 am - 10:30 pm<br>
+                    <strong>Closed On Tuesday</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 The Wolf Den Bar & Grill. All rights reserved.</p>
+                <p>
+                    <a href="accessibility.html">Website Accessibility</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/reservation-form.js"></script>
+</body>
+</html>
