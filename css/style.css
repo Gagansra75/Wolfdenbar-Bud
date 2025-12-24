@@ -30,6 +30,12 @@ body {
     color: #333333;
     background-color: #ffffff;
     overflow-x: hidden;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="24" font-size="24">🐺</text></svg>'), auto;
+}
+
+/* Override cursor for clickable elements */
+a, button, .btn, .gallery-item, .review-card, input, select, textarea {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text x="0" y="24" font-size="24">🐾</text></svg>'), pointer;
 }
 
 h1, h2, h3, h4, h5, h6 {

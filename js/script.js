@@ -2,6 +2,111 @@
 // Mobile Menu Toggle
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
+    // ===================================
+    // Cursor Trail Effect (Snowflakes)
+    // ===================================
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const maxParticles = 50;
+
+    class Particle {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * 8 + 4;
+            this.speedX = Math.random() * 3 - 1.5;
+            this.speedY = Math.random() * 3 - 1.5;
+            this.life = 1;
+            this.decay = Math.random() * 0.02 + 0.01;
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = Math.random() * 10 - 5;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.life -= this.decay;
+            this.rotation += this.rotationSpeed;
+            this.size *= 0.97;
+        }
+
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.life;
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            
+            // Draw snowflake
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#1e3a5f';
+            
+            // Simple snowflake shape
+            for (let i = 0; i < 6; i++) {
+                ctx.rotate(Math.PI / 3);
+                ctx.fillRect(-this.size / 2, -1, this.size, 2);
+            }
+            
+            ctx.restore();
+        }
+    }
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let lastTime = Date.now();
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        const currentTime = Date.now();
+        if (currentTime - lastTime > 30) { // Throttle particle creation
+            if (particles.length < maxParticles) {
+                particles.push(new Particle(mouseX, mouseY));
+            }
+            lastTime = currentTime;
+        }
+    });
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+            particles[i].update();
+            particles[i].draw();
+
+            if (particles[i].life <= 0 || particles[i].size < 0.5) {
+                particles.splice(i, 1);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Resize canvas on window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // ===================================
+    // Mobile Menu Toggle
+    // ===================================
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navList = document.querySelector('.nav-list');
     
