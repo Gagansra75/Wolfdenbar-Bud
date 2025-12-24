@@ -49,8 +49,11 @@
         <!-- Hero Section with Video Background -->
         <section class="hero-section">
             <div class="hero-video-container">
-                <video class="hero-video" autoplay muted loop playsinline>
+                <video class="hero-video" autoplay muted loop playsinline poster="images/Photo Oct 04 2025, 2 11 21 PM.jpg">
+                    <source src="images/Video Oct 11 2025, 7 37 13 AM.mov" type="video/quicktime">
                     <source src="images/Video Oct 11 2025, 7 37 13 AM.mov" type="video/mp4">
+                    <!-- Fallback for browsers that don't support video -->
+                    <img src="images/Photo Oct 04 2025, 2 11 21 PM.jpg" alt="The Wolf Den Bar & Grill">
                 </video>
                 <div class="hero-overlay"></div>
             </div>
