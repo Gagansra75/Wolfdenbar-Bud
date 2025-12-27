@@ -1,8 +1,11 @@
 // Events Page Interactive Features
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Countdown to Christmas
-    initChristmasCountdown();
+    // Countdown to New Year's Eve
+    initNewYearsCountdown();
+    
+    // Initialize animated fireworks
+    initFireworks();
     
     // Animate elements on scroll
     animateOnScroll();
@@ -14,13 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initOfferCards();
 });
 
-// Countdown to Christmas Day Event
-function initChristmasCountdown() {
-    const christmasDate = new Date('December 25, 2025 09:00:00').getTime();
+// Countdown to New Year's Eve Event
+function initNewYearsCountdown() {
+    const newYearsEve = new Date('December 31, 2025 19:00:00').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
-        const distance = christmasDate - now;
+        const distance = newYearsEve - now;
         
         if (distance > 0) {
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -29,14 +32,148 @@ function initChristmasCountdown() {
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
             // You can add a countdown display if desired
-            console.log(`Christmas Event in: ${days}d ${hours}h ${minutes}m ${seconds}s`);
+            console.log(`New Year's Eve Party in: ${days}d ${hours}h ${minutes}m ${seconds}s`);
         } else {
-            console.log('🎄 Christmas Event is LIVE! 🎄');
+            console.log('🎉 Happy New Year! Ring in 2026 at The Wolf Den! 🎉');
         }
     }
     
     updateCountdown();
     setInterval(updateCountdown, 1000);
+}
+
+// Animated Fireworks Effect
+function initFireworks() {
+    const canvas = document.getElementById('fireworksCanvas');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = document.querySelector('.christmas-hero').offsetHeight;
+    
+    const fireworks = [];
+    const particles = [];
+    
+    // Firework colors
+    const colors = [
+        '#FFD700', // Gold
+        '#FF6B35', // Orange
+        '#4CAF50', // Green
+        '#2196F3', // Blue
+        '#E91E63', // Pink
+        '#9C27B0', // Purple
+        '#00BCD4', // Cyan
+        '#FFC107'  // Amber
+    ];
+    
+    class Firework {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height;
+            this.targetY = Math.random() * (canvas.height * 0.4) + 50;
+            this.speed = Math.random() * 3 + 4;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.exploded = false;
+        }
+        
+        update() {
+            if (!this.exploded) {
+                this.y -= this.speed;
+                if (this.y <= this.targetY) {
+                    this.explode();
+                }
+            }
+        }
+        
+        draw() {
+            if (!this.exploded) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+        
+        explode() {
+            this.exploded = true;
+            const particleCount = Math.random() * 50 + 50;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle(this.x, this.y, this.color));
+            }
+        }
+    }
+    
+    class Particle {
+        constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 5 + 2;
+            this.vx = Math.cos(angle) * speed;
+            this.vy = Math.sin(angle) * speed;
+            this.alpha = 1;
+            this.decay = Math.random() * 0.015 + 0.015;
+            this.gravity = 0.1;
+            this.size = Math.random() * 3 + 2;
+        }
+        
+        update() {
+            this.vx *= 0.98;
+            this.vy += this.gravity;
+            this.x += this.vx;
+            this.y += this.vy;
+            this.alpha -= this.decay;
+        }
+        
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+    
+    function animate() {
+        ctx.fillStyle = 'rgba(10, 10, 46, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Add new fireworks randomly
+        if (Math.random() < 0.05) {
+            fireworks.push(new Firework());
+        }
+        
+        // Update and draw fireworks
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+            fireworks[i].update();
+            fireworks[i].draw();
+            if (fireworks[i].exploded) {
+                fireworks.splice(i, 1);
+            }
+        }
+        
+        // Update and draw particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].alpha <= 0) {
+                particles.splice(i, 1);
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector('.christmas-hero').offsetHeight;
+    });
 }
 
 // Animate elements when scrolled into view
