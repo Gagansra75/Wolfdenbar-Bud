@@ -1,11 +1,8 @@
-// Events Page Interactive Features
+// Events Page Interactive Features - DJ Trivia Night
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Countdown to New Year's Eve
-    initNewYearsCountdown();
-    
-    // Initialize animated fireworks
-    initFireworks();
+    // Initialize trivia-themed animations
+    initTriviaAnimations();
     
     // Animate elements on scroll
     animateOnScroll();
@@ -15,35 +12,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Offer card effects
     initOfferCards();
+    
+    // Initialize countdown to next Friday
+    initNextFridayCountdown();
 });
 
-// Countdown to New Year's Eve Event
-function initNewYearsCountdown() {
-    const newYearsEve = new Date('December 31, 2025 19:00:00').getTime();
+// Countdown to Next Friday Trivia
+function initNextFridayCountdown() {
+    function getNextFriday() {
+        const now = new Date();
+        const dayOfWeek = now.getDay();
+        const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7;
+        const nextFriday = new Date(now);
+        nextFriday.setDate(now.getDate() + daysUntilFriday);
+        nextFriday.setHours(17, 0, 0, 0); // 5:00 PM
+        return nextFriday;
+    }
+    
+    const nextFriday = getNextFriday();
     
     function updateCountdown() {
         const now = new Date().getTime();
-        const distance = newYearsEve - now;
+        const distance = nextFriday.getTime() - now;
         
         if (distance > 0) {
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            // You can add a countdown display if desired
-            console.log(`New Year's Eve Party in: ${days}d ${hours}h ${minutes}m ${seconds}s`);
+            if (days > 0) {
+                console.log(`🎤 Next DJ Trivia in: ${days} day${days > 1 ? 's' : ''} ${hours}h ${minutes}m`);
+            } else {
+                console.log(`🎤 DJ Trivia starts in: ${hours}h ${minutes}m! 🎯`);
+            }
         } else {
-            console.log('🎉 Happy New Year! Ring in 2026 at The Wolf Den! 🎉');
+            console.log('🎤 DJ Trivia Night is LIVE NOW! 🎯');
         }
     }
     
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 60000); // Update every minute
 }
 
-// Animated Fireworks Effect
-function initFireworks() {
+// Trivia-themed Canvas Animations
+function initTriviaAnimations() {
     const canvas = document.getElementById('fireworksCanvas');
     if (!canvas) return;
     
@@ -51,10 +63,9 @@ function initFireworks() {
     canvas.width = window.innerWidth;
     canvas.height = document.querySelector('.christmas-hero').offsetHeight;
     
-    const fireworks = [];
     const particles = [];
     
-    // Firework colors
+    // Trivia-themed colors (vibrant and fun)
     const colors = [
         '#FFD700', // Gold
         '#FF6B35', // Orange
@@ -63,113 +74,113 @@ function initFireworks() {
         '#E91E63', // Pink
         '#9C27B0', // Purple
         '#00BCD4', // Cyan
-        '#FFC107'  // Amber
+        '#FFC107', // Amber
+        '#f7b731', // Yellow
+        '#5f27cd'  // Deep Purple
     ];
     
-    class Firework {
+    // Question mark and music note particles
+    class TriviaParticle {
         constructor() {
             this.x = Math.random() * canvas.width;
-            this.y = canvas.height;
-            this.targetY = Math.random() * (canvas.height * 0.4) + 50;
-            this.speed = Math.random() * 3 + 4;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 20 + 10;
+            this.speedX = Math.random() * 2 - 1;
+            this.speedY = Math.random() * 2 - 1;
             this.color = colors[Math.floor(Math.random() * colors.length)];
-            this.exploded = false;
+            this.symbol = Math.random() > 0.5 ? '?' : '♪';
+            this.rotation = Math.random() * Math.PI * 2;
+            this.rotationSpeed = Math.random() * 0.05 - 0.025;
+            this.opacity = Math.random() * 0.5 + 0.3;
         }
         
         update() {
-            if (!this.exploded) {
-                this.y -= this.speed;
-                if (this.y <= this.targetY) {
-                    this.explode();
-                }
-            }
-        }
-        
-        draw() {
-            if (!this.exploded) {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-        }
-        
-        explode() {
-            this.exploded = true;
-            const particleCount = Math.random() * 50 + 50;
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle(this.x, this.y, this.color));
-            }
-        }
-    }
-    
-    class Particle {
-        constructor(x, y, color) {
-            this.x = x;
-            this.y = y;
-            this.color = color;
-            const angle = Math.random() * Math.PI * 2;
-            const speed = Math.random() * 5 + 2;
-            this.vx = Math.cos(angle) * speed;
-            this.vy = Math.sin(angle) * speed;
-            this.alpha = 1;
-            this.decay = Math.random() * 0.015 + 0.015;
-            this.gravity = 0.1;
-            this.size = Math.random() * 3 + 2;
-        }
-        
-        update() {
-            this.vx *= 0.98;
-            this.vy += this.gravity;
-            this.x += this.vx;
-            this.y += this.vy;
-            this.alpha -= this.decay;
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.rotation += this.rotationSpeed;
+            
+            // Bounce off edges
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
         }
         
         draw() {
             ctx.save();
-            ctx.globalAlpha = this.alpha;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.font = `bold ${this.size}px Arial`;
             ctx.fillStyle = this.color;
-            ctx.fill();
+            ctx.globalAlpha = this.opacity;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(this.symbol, 0, 0);
             ctx.restore();
         }
     }
     
+    // Create particles
+    for (let i = 0; i < 25; i++) {
+        particles.push(new TriviaParticle());
+    }
+    
+    // Glowing orbs
+    class GlowOrb {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.radius = Math.random() * 3 + 2;
+            this.speedX = Math.random() * 1.5 - 0.75;
+            this.speedY = Math.random() * 1.5 - 0.75;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.pulseSpeed = Math.random() * 0.05 + 0.02;
+            this.pulsePhase = Math.random() * Math.PI * 2;
+        }
+        
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.pulsePhase += this.pulseSpeed;
+            
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        
+        draw() {
+            const pulse = Math.sin(this.pulsePhase) * 0.5 + 0.5;
+            const gradient = ctx.createRadialGradient(
+                this.x, this.y, 0,
+                this.x, this.y, this.radius * (1 + pulse)
+            );
+            gradient.addColorStop(0, this.color);
+            gradient.addColorStop(1, 'transparent');
+            
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius * (1 + pulse), 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.globalAlpha = 0.6 + pulse * 0.4;
+            ctx.fill();
+        }
+    }
+    
+    // Add glowing orbs
+    for (let i = 0; i < 40; i++) {
+        particles.push(new GlowOrb());
+    }
+    
     function animate() {
-        ctx.fillStyle = 'rgba(10, 10, 46, 0.1)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Add new fireworks randomly
-        if (Math.random() < 0.05) {
-            fireworks.push(new Firework());
-        }
-        
-        // Update and draw fireworks
-        for (let i = fireworks.length - 1; i >= 0; i--) {
-            fireworks[i].update();
-            fireworks[i].draw();
-            if (fireworks[i].exploded) {
-                fireworks.splice(i, 1);
-            }
-        }
-        
-        // Update and draw particles
-        for (let i = particles.length - 1; i >= 0; i--) {
-            particles[i].update();
-            particles[i].draw();
-            if (particles[i].alpha <= 0) {
-                particles.splice(i, 1);
-            }
-        }
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
         
         requestAnimationFrame(animate);
     }
     
     animate();
     
-    // Handle window resize
+    // Resize handler
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
         canvas.height = document.querySelector('.christmas-hero').offsetHeight;
@@ -311,7 +322,7 @@ function trackEventInteraction(action, label) {
 const reserveButtons = document.querySelectorAll('.btn-reserve');
 reserveButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        trackEventInteraction('click', 'reserve_christmas_event');
+        trackEventInteraction('click', 'reserve_trivia_event');
     });
 });
 
@@ -319,7 +330,7 @@ reserveButtons.forEach(btn => {
 const callButtons = document.querySelectorAll('.btn-call');
 callButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        trackEventInteraction('click', 'call_christmas_event');
+        trackEventInteraction('click', 'call_trivia_event');
     });
 });
 
@@ -339,30 +350,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Show special notification on page load
 function showWelcomeNotification() {
-    const hasSeenNotification = sessionStorage.getItem('christmasEventNotification');
+    const hasSeenNotification = sessionStorage.getItem('triviaEventNotification');
     
     if (!hasSeenNotification) {
-        // You can add a modal or toast notification here
-        console.log('🎅 Welcome to our Christmas Day Sports Party! 🎄');
-        sessionStorage.setItem('christmasEventNotification', 'true');
+        console.log('🎤 Join us for DJ Trivia Night every Friday! 🎯');
+        sessionStorage.setItem('triviaEventNotification', 'true');
     }
 }
 
 showWelcomeNotification();
 
 // Console easter egg
-console.log('%c🎄 CHRISTMAS DAY SPORTS PARTY 🏀🏈', 'font-size: 24px; font-weight: bold; color: #c41e3a; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
-console.log('%c🎅 December 25th | 9AM - 10:30PM', 'font-size: 16px; color: #165b33; font-weight: bold;');
-console.log('%c$2 OFF All Drinks & Food | 15% OFF Bills Over $100', 'font-size: 14px; color: #ffd700; font-weight: bold;');
+console.log('%c🎤 DJ TRIVIA NIGHT 🎯', 'font-size: 24px; font-weight: bold; color: #8e24aa; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+console.log('%c🎵 Every Friday | 5PM - 7PM', 'font-size: 16px; color: #ff6b35; font-weight: bold;');
+console.log('%cTest Your Knowledge, Win Prizes & Have Fun!', 'font-size: 14px; color: #ffd700; font-weight: bold;');
 console.log('%cThe Wolf Den Bar & Grill - 501 Ralston Street, Reno, NV', 'font-size: 12px; color: #666;');
-
-// Add snow effect (optional)
-function createSnowEffect() {
-    const snowContainer = document.querySelector('.hero-snow');
-    if (!snowContainer) return;
-    
-    // Snow effect is already in CSS, but you could add more dynamic snow here
-}
 
 // Pulse animation for mega deal
 const megaDeal = document.querySelector('.offer-card.mega');
@@ -375,17 +377,22 @@ if (megaDeal) {
     }, 5000);
 }
 
-// Add time-sensitive messaging
-function addTimeMessage() {
+// Add time-sensitive messaging for next Friday
+function addNextFridayMessage() {
     const now = new Date();
-    const christmasDay = new Date('December 25, 2025');
-    const daysUntil = Math.ceil((christmasDay - now) / (1000 * 60 * 60 * 24));
+    const dayOfWeek = now.getDay();
     
-    if (daysUntil > 0 && daysUntil <= 7) {
-        console.log(`Only ${daysUntil} days until our Christmas Sports Party!`);
-    } else if (daysUntil === 0) {
-        console.log('🎉 TODAY IS THE DAY! See you at The Wolf Den! 🎉');
+    if (dayOfWeek === 5) { // Friday
+        const currentHour = now.getHours();
+        if (currentHour < 17) {
+            console.log('🎤 DJ Trivia Night TONIGHT at 5PM! See you there! 🎯');
+        } else if (currentHour >= 17 && currentHour < 19) {
+            console.log('🎤 DJ Trivia Night is LIVE NOW! 🎯');
+        }
+    } else {
+        const daysUntilFriday = (5 - dayOfWeek + 7) % 7 || 7;
+        console.log(`Only ${daysUntilFriday} days until DJ Trivia Night!`);
     }
 }
 
-addTimeMessage();
+addNextFridayMessage();
