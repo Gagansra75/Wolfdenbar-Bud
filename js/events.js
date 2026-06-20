@@ -61,7 +61,8 @@ function initTriviaAnimations() {
     
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
-    canvas.height = document.querySelector('.christmas-hero').offsetHeight;
+    const heroSection = document.querySelector('.event-hero');
+    canvas.height = heroSection ? heroSection.offsetHeight : window.innerHeight * 0.6;
     
     const particles = [];
     
@@ -183,7 +184,8 @@ function initTriviaAnimations() {
     // Resize handler
     window.addEventListener('resize', () => {
         canvas.width = window.innerWidth;
-        canvas.height = document.querySelector('.christmas-hero').offsetHeight;
+        const heroSection = document.querySelector('.event-hero');
+        canvas.height = heroSection ? heroSection.offsetHeight : window.innerHeight * 0.6;
     });
 }
 

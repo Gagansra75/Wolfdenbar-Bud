@@ -122,9 +122,10 @@ Current contact details in the website:
 
 ## ⏰ Business Hours
 
-- Sun, Mon, Wed, Thur: 11:00 am - 09:00 pm
-- Fri, Sat: 11:00 am - 10:30 pm
-- Closed On Tuesday
+- Sun: 10:00 am - 10:00 pm
+- Mon - Thur: 11:00 am - 10:00 pm
+- Fri: 11:00 am - 12:00 am
+- Sat: 10:00 am - 12:00 am
 
 ## 🌐 Fonts Used
 
