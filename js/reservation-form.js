@@ -89,18 +89,6 @@ Please confirm this reservation by contacting the customer.
             dateInput.setAttribute('max', maxDate.toISOString().split('T')[0]);
         }
         
-        // Validate that reservation is not on Tuesday (closed day)
-        dateInput.addEventListener('change', function() {
-            const selectedDate = new Date(this.value);
-            const dayOfWeek = selectedDate.getDay();
-            
-            // Tuesday is 2
-            if (dayOfWeek === 2) {
-                alert('We are closed on Tuesdays. Please select a different date.');
-                this.value = '';
-            }
-        });
-        
         // Update guest count if "More than 10" is selected
         const guestsSelect = document.getElementById('guests');
         if (guestsSelect) {
